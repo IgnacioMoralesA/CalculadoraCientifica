@@ -1,22 +1,52 @@
+import java.util.Scanner;
+
 public class CalculadoraCientifica {
+    static Scanner leer = new Scanner(System.in);
     public static void main(String[] args) {
         menu();
     }
 
     public static void menu() {
-        double[] solucionesCuadratica = ecuacionCuadratica();
+        ecuacionCuadratica();
+        sistemaEcuaciones();
+        ecuacionRecta();
+    }
+
+    public static void ecuacionCuadratica() {
+        String[] parametrosCuadratica = {"a","b","c"};
+        double[] coeficientes = ingresarCoeficientes(parametrosCuadratica);
+        double[] solucionesCuadratica = calcularEcuacionCuadratica(coeficientes);
         mostrarEcuacionCuadratica(solucionesCuadratica);
-        double[] solucionesSistema = sistemaEcuaciones();
+    }
+
+    public static void sistemaEcuaciones() {
+        String[] parametrosSistemaEcuaciones = {"a1","b1","c1","a2","b2","c2"};
+        double[] coeficientes = ingresarCoeficientes(parametrosSistemaEcuaciones);
+        double[] solucionesSistema = calcularSistemaEcuaciones(coeficientes);
         mostrarSistemaEcuaciones(solucionesSistema);
-        double[] solucionRecta = ecuacionRecta();
+    }
+
+    public static void ecuacionRecta() {
+        String[] parametrosRecta = {"x1","y1","x2","y2"};
+        double[] coeficientes = ingresarCoeficientes(parametrosRecta);
+        double[] solucionRecta = calcularEcuacionRecta(coeficientes);
         mostrarEcuacionRecta(solucionRecta);
     }
 
-    public static double[] ecuacionCuadratica() {
+    public static double[] ingresarCoeficientes(String[] parametros) {
+        double[] coeficientes = new double[parametros.length];
+        for (int i = 0; i < coeficientes.length; i++) {
+            System.out.println(parametros[i]+"?:");
+            coeficientes[i] = leer.nextDouble();
+        }
+        return coeficientes;
+    }
+
+    public static double[] calcularEcuacionCuadratica(double[] coeficientes) {
         double[] solucionesCuadratica = new double[2];
-        double a = 0;
-        double b = 0;
-        double c = 0;
+        double a = coeficientes[0];
+        double b = coeficientes[1];
+        double c = coeficientes[2];
         double discriminante = (Math.pow(b,2)-(4*a*c));
         double raizDiscriminante = Math.sqrt(discriminante);
         double x1 = (-b+raizDiscriminante)/(2*a);
@@ -26,28 +56,28 @@ public class CalculadoraCientifica {
         return solucionesCuadratica;
     }
 
-    public static double[] sistemaEcuaciones() {
+    public static double[] calcularSistemaEcuaciones(double[] coeficientes) {
         double[] solucionesSistema = new double[2];
-        double a = 0;
-        double b = 0;
-        double c = 0;
-        double d = 0;
-        double e = 0;
-        double f = 0;
+        double a1 = coeficientes[0];
+        double b1 = coeficientes[1];
+        double c1 = coeficientes[2];
+        double a2 = coeficientes[3];
+        double b2 = coeficientes[4];
+        double c2 = coeficientes[5];
         double x,y;
-        y = ((f * a) - (d * c)) / ((e * a) - (d * b));
-        x = (c - (b * y)) / a;
+        y = ((c2 * a1) - (a2 * c1)) / ((b2 * a1) - (a2 * b1));
+        x = (c1 - (b1 * y)) / a1;
         solucionesSistema[0] = x;
         solucionesSistema[1] = y;
         return solucionesSistema;
     }
 
-    public static double[] ecuacionRecta() {
+    public static double[] calcularEcuacionRecta(double[] coeficientes) {
         double[] solucionRecta = new double[2];
-        double x1 = 0;
-        double y1 = 0;
-        double x2 = 0;
-        double y2 = 0;
+        double x1 = coeficientes[0];
+        double y1 = coeficientes[1];
+        double x2 = coeficientes[2];
+        double y2 = coeficientes[3];
         double pendiente = (y2 - y1) / (x2 - x1);
         double b = ((-x1)*pendiente)+y1;
         solucionRecta[0] = pendiente;
