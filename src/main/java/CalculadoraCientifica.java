@@ -3,7 +3,11 @@ import java.util.Scanner;
 public class CalculadoraCientifica {
     static Scanner leer = new Scanner(System.in);
     public static void main(String[] args) {
+        try{
         menu();
+        }catch (Exception e){
+            System.out.println("Valor no valido");
+        }
     }
 
     public static void menu() {
