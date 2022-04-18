@@ -7,9 +7,41 @@ public class CalculadoraCientifica {
     }
 
     public static void menu() {
-        ecuacionCuadratica();
-        sistemaEcuaciones();
-        ecuacionRecta();
+        try{
+            menuCalculadora();
+        }catch (Exception e){
+            System.out.println("Ingrese un número válido");
+        }
+    }
+
+    public static void menuCalculadora() {
+        int eleccion;
+        do {
+            do {
+                mostrarOpciones();
+                eleccion = leer.nextInt();
+                switch (eleccion){
+                    case 1:
+                        ecuacionCuadratica();
+                        break;
+                    case 2:
+                        sistemaEcuaciones();
+                        break;
+                    case 3:
+                        ecuacionRecta();
+                        break;
+                    case 4:
+                        break;
+                }
+            }while (eleccion < 1 || eleccion > 4);
+        }while (eleccion != 4);
+    }
+
+    public static void mostrarOpciones() {
+        System.out.println("[1] Ecuación Cuadrática");
+        System.out.println("[2] Sistema de Ecuaciones");
+        System.out.println("[3] Ecuación de la recta");
+        System.out.println("[4] Salir");
     }
 
     public static void ecuacionCuadratica() {
@@ -36,7 +68,7 @@ public class CalculadoraCientifica {
     public static double[] ingresarCoeficientes(String[] parametros) {
         double[] coeficientes = new double[parametros.length];
         for (int i = 0; i < coeficientes.length; i++) {
-            System.out.println(parametros[i]+"?:");
+            System.out.println("Ingrese "+parametros[i]+"?:");
             coeficientes[i] = leer.nextDouble();
         }
         return coeficientes;
