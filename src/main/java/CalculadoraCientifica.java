@@ -2,11 +2,12 @@ import java.util.Scanner;
 
 public class CalculadoraCientifica {
     static Scanner leer = new Scanner(System.in);
+
     public static void main(String[] args) {
         try{
         menu();
         }catch (Exception e){
-            System.out.println("Valor no valido");
+            System.out.println("Valor no valido.");
         }
     }
 
@@ -128,15 +129,15 @@ public class CalculadoraCientifica {
     }
 
     public static void ecuacionescuadradas() {
-        double a=0;
-        double b=0;
-        double c=0;
+        double a =0;
+        do {
         System.out.println("Ingrese A: ");
         a=leer.nextDouble();
+        }while (a == 0);
         System.out.println("Ingrese B: ");
-        b=leer.nextDouble();
+        double b=leer.nextDouble();
         System.out.println("Ingrese C: ");
-        c=leer.nextDouble();
+        double c=leer.nextDouble();
         if(Math.pow(b,2)<(4*a*c)){
             System.out.println("Solucion no real");
         }
