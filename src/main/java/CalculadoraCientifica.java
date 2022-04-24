@@ -31,7 +31,8 @@ public class CalculadoraCientifica {
                 System.out.println("[10] Perimetros, Areas o Volumenes");
                 System.out.println("[11] Sistema de DOS ecuaciones");
                 System.out.println("[12] Ecuaciones de la recta");
-                System.out.println("[13] Salir");
+                System.out.println("[13] Factoriales");
+                System.out.println("[14] Salir");
                 eleccion = leer.nextInt();
                 switch (eleccion) {
                     case 1:
@@ -71,11 +72,24 @@ public class CalculadoraCientifica {
                         ecuacionRecta();
                         break;
                     case 13:
+                        Factoriales(a);
+                        break;
+                    case 14:
                         break;
                 }
-            } while (eleccion < 1 || eleccion > 13);
-        }while (eleccion != 13);
+            } while (eleccion < 1 || eleccion > 14);
+        }while (eleccion != 14);
         }
+
+    public static void Factoriales(Double a) {
+        System.out.println("ingrese dato: ");
+        a=leer.nextDouble();
+        int fact = 1;
+        for( int i = 0; i <= a; i++ ) {
+            fact *= (i+1);
+        }
+        resultado(fact);
+    }
 
     public static double[] ecuacionRecta() {
         double[] solucionRecta = new double[2];
@@ -143,9 +157,9 @@ public class CalculadoraCientifica {
         }
         double raiz=Math.sqrt(Math.pow(b,2)-4*a*c);
         if(Math.pow(b,2)>(4*a*c)){
-        System.out.println("Las soluciones a su ecuacion son: ");
-        System.out.println("X1= "+(((-b)+raiz))/(2*a));
-        System.out.println("X2= "+(((-b)-raiz))/(2*a));
+        double X1=(((-b)+raiz))/(2*a);
+        double X2=(((-b)-raiz))/(2*a);
+        ResultadoEcuaciones(X1,X2);
         }
     }
 
@@ -157,15 +171,15 @@ public class CalculadoraCientifica {
             System.out.println("[2] Areas");
             System.out.println("[3] Volumenes");
             eleccion1 = leer.nextInt();
+            if(eleccion1==3){
+                eleccion1=1;
+            }
             switch (eleccion1) {
                 case 1:
                     perimetros(a, b);
                     break;
                 case 2:
                     areas(a, b);
-                    break;
-                case 3:
-                    perimetros(a, b);
                     break;
             }
         }while (eleccion1<1 || eleccion1>3);
@@ -211,7 +225,8 @@ public class CalculadoraCientifica {
     public static double cuadrado(double a){
         System.out.println("Cual es el lado de su cuadrado?");
         a=leer.nextDouble();
-        System.out.println("El area de su cuadrado es: "+ Math.pow(a,2));
+        double resultado=Math.pow(a,2);
+        resultado(resultado);
         return Math.pow(a,2);
     }
 
@@ -220,28 +235,32 @@ public class CalculadoraCientifica {
         a=leer.nextDouble();
         System.out.println("Ingrese el alto de su rectangulo: ");
         b=leer.nextDouble();
-        System.out.println("El area de su rectangulo es: "+a*b);
+        double resultado=a*b;
+        resultado(resultado);
         return a*b;
     }
 
     public static double circulo(double a){
         System.out.println("Ingrese el radio de su circulo: ");
         a=leer.nextDouble();
-        System.out.println("el area de su circulo es: "+ (Math.PI*Math.pow(a,2)));
+        double resultado=(Math.PI*Math.pow(a,2));
+        resultado(resultado);
         return Math.PI*Math.pow(a,2);
     }
 
     public static double esfera(double a){
         System.out.println("Ingrese el radio de su esfera: ");
         a=leer.nextDouble();
-        System.out.println("El area de su esfera es: "+(4*a*Math.PI));
+        double resultado=(4*a*Math.PI);
+        resultado(resultado);
         return 4*a*Math.PI;
     }
 
     public static double cubo(double a){
         System.out.println("Ingrese el valor de un lado de su cubo: ");
         a=leer.nextDouble();
-        System.out.println("El area de su cubo es: "+(6*Math.pow(a,2)));
+        double resultado=(6*Math.pow(a,2));
+        resultado(resultado);
         return 6*Math.pow(a,2);
     }
 
@@ -251,8 +270,9 @@ public class CalculadoraCientifica {
         System.out.println("Ingrese el alto de el cono: ");
         b=leer.nextDouble();
         double g=Math.sqrt((Math.pow(a,2)+Math.pow(b,2)));
-        System.out.println("El area de su cono es: "+ (Math.PI*Math.pow(a,2)+Math.PI*a*g));
-return (Math.PI*a*(a+b));
+        double resultado=(Math.PI*Math.pow(a,2)+Math.PI*a*g);
+        resultado(resultado);
+        return (Math.PI*a*(a+b));
     }
 
     public static void perimetros(double a, double b) {
@@ -295,7 +315,8 @@ return (Math.PI*a*(a+b));
     public static double cuadradoP(double a){
         System.out.println("Ingrese el valor del lado del cuadrado: ");
         a=leer.nextDouble();
-        System.out.println("El perimetro de su cuadrado es: "+(4*a));
+        double resultado=(4*a);
+        resultado(resultado);
         return 4*a;
     }
 
@@ -304,28 +325,32 @@ return (Math.PI*a*(a+b));
         a=leer.nextDouble();
         System.out.println("Ingrese el ancho del rectangulo: ");
         b=leer.nextDouble();
-        System.out.println("El perimetro de su rectangulo es: "+(a*b));
+        double resultado=(a*b);
+        resultado(resultado);
         return a*b;
     }
 
     public static double circuloP(double a){
         System.out.println("Ingrese el radio del circulo: ");
         a=leer.nextDouble();
-        System.out.println("El perimetro de su circulo es: "+(2*a*Math.PI));
+        double resultado=(2*a*Math.PI);
+        resultado(resultado);
         return 2*a*Math.PI;
     }
 
     public static double esferaV(double a){
         System.out.println("Ingrese el radio de su esfera: ");
         a=leer.nextDouble();
-        System.out.println("El volumen de su esfera es: "+((4*Math.pow(a,3)*Math.PI)/3));
+        double resultado=((4*Math.pow(a,3)*Math.PI)/3);
+        resultado(resultado);
         return (((4/3)*Math.pow(a,3)*Math.PI));
     }
 
     public static double cuboV(double a){
         System.out.println("Ingrese el valor de un lado de su cubo: ");
         a=leer.nextDouble();
-        System.out.println("El volumen de su cubo es: "+(4*a));
+        double resultado=(4*a);
+        resultado(resultado);
         return 4*a;
     }
 
@@ -334,7 +359,8 @@ return (Math.PI*a*(a+b));
         a=leer.nextDouble();
         System.out.println("Ingrese la altura de su cono: ");
         b=leer.nextDouble();
-        System.out.println("El volumen de su cono es:"+(Math.PI*Math.pow(a,2)*b)/3);
+        double resultado=((Math.PI*Math.pow(a,2)*b)/3);
+        resultado(resultado);
          return (Math.PI*Math.pow(a,2)*b);
     }
 
@@ -344,7 +370,8 @@ return (Math.PI*a*(a+b));
         System.out.println("digite el segundo numero(numero entero): ");
         c=leer.nextDouble();
         c=c/100;
-        System.out.println("El "+c+"%"+" porcentaje de "+a+" es: "+ (a*c));
+        double resultado=a*c;
+        resultado(resultado);
     return a*c;
     }
 
@@ -353,7 +380,8 @@ return (Math.PI*a*(a+b));
         a=leer.nextDouble();
         System.out.println("digite la potencia: ");
         b=leer.nextDouble();
-        System.out.println(a+"^"+b+" = "+ Math.pow(a,b));
+        double resultado=Math.pow(a,b);
+        resultado(resultado);
     return Math.pow(a,b);
     }
 
@@ -362,7 +390,8 @@ return (Math.PI*a*(a+b));
         a=leer.nextDouble();
         System.out.println("digite su segundo numero: ");
         b=leer.nextDouble();
-        System.out.println("El numero menor es: "+ Math.min(a,b));
+        double resultado=Math.min(a,b);
+        resultado(resultado);
         return Math.min(a,b);
     }
 
@@ -371,7 +400,8 @@ return (Math.PI*a*(a+b));
         a=leer.nextDouble();
         System.out.println("digite su segundo numero: ");
         b=leer.nextDouble();
-        System.out.println("El numero mayor es: "+ Math.max(a,b));
+        double resultado=Math.max(a,b);
+        resultado(resultado);
     return Math.max(a,b);
     }
 
@@ -380,7 +410,8 @@ return (Math.PI*a*(a+b));
         a=leer.nextDouble();
         System.out.println("digite su divisor: ");
         b=leer.nextDouble();
-        System.out.println(a+" / "+b+" = "+ (a/b));
+        double resultado=a/b;
+        resultado(resultado);
         return a/b;
     }
 
@@ -389,7 +420,8 @@ return (Math.PI*a*(a+b));
         a=leer.nextDouble();
         System.out.println("digite su segundo factor: ");
         b=leer.nextDouble();
-        System.out.println(a+" * "+b+" = "+ (a*b));
+        double resultado=a*b;
+        resultado(resultado);
         return a*b;
     }
 
@@ -398,7 +430,8 @@ return (Math.PI*a*(a+b));
         a=leer.nextDouble();
         System.out.println("digite el sustraendo: ");
         b=leer.nextDouble();
-        System.out.println(a+" - "+b+" = "+ (a-b));
+        double resultado=a-b;
+        resultado(resultado);
         return a-b;
     }
 
@@ -407,7 +440,18 @@ return (Math.PI*a*(a+b));
         a=leer.nextDouble();
         System.out.println("digite su segundo sumando: ");
         b=leer.nextDouble();
-        System.out.println(a+" + "+b+" = "+ (a+b));
+        double resultado=a+b;
+        resultado(resultado);
     return a+b;
+    }
+
+    public static void resultado(double resultado){
+        System.out.println("="+resultado);
+    }
+
+    public static void ResultadoEcuaciones(double X1, double X2){
+        System.out.println("Las soluciones a su ecuacion son: ");
+        System.out.println("X1= "+X1);
+        System.out.println("X2= "+X2);
     }
 }
