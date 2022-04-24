@@ -69,18 +69,18 @@ public class CodigoNacho {
     }
 
     public static void mostrarOpcionesMenu() {
-        System.out.println("que operacion desea hacer? ");
+        System.out.println("Qué operación desea realizar? ");
         System.out.println("[1] Sumar");
         System.out.println("[2] Restar");
         System.out.println("[3] Multiplicar");
         System.out.println("[4] Dividir");
-        System.out.println("[5] Sacar el numero mayor");
-        System.out.println("[6] Sacar el numero menor");
+        System.out.println("[5] Sacar el número mayor");
+        System.out.println("[6] Sacar el número menor");
         System.out.println("[7] Potencia");
         System.out.println("[8] Porcentaje");
-        System.out.println("[9] Ecuaciones");
-        System.out.println("[10] Perimetros, Areas o Volumenes");
-        System.out.println("[11] Sistema de DOS ecuaciones");
+        System.out.println("[9] Ecuación Cuadrática");
+        System.out.println("[10] Perímetros, Áreas o Volúmenes");
+        System.out.println("[11] Sistema de Ecuaciones (2 incógnitas)");
         System.out.println("[12] Ecuaciones de la recta");
         System.out.println("[13] Factoriales");
         System.out.println("[14] Salir");
@@ -475,7 +475,7 @@ public class CodigoNacho {
     }
 
     public static void resultado(double resultado){
-        System.out.println("="+resultado);
+        System.out.println("El resultado es = "+resultado);
     }
 
 
