@@ -68,7 +68,7 @@ public class CalculadoraCientifica {
     public static double[] ingresarCoeficientes(String[] parametros) {
         double[] coeficientes = new double[parametros.length];
         for (int i = 0; i < coeficientes.length; i++) {
-            System.out.println("Ingrese "+parametros[i]+"?:");
+            System.out.println("Valor de "+parametros[i]+"?:");
             coeficientes[i] = leer.nextDouble();
         }
         return coeficientes;
@@ -80,11 +80,15 @@ public class CalculadoraCientifica {
         double b = coeficientes[1];
         double c = coeficientes[2];
         double discriminante = (Math.pow(b,2)-(4*a*c));
-        double raizDiscriminante = Math.sqrt(discriminante);
-        double x1 = (-b+raizDiscriminante)/(2*a);
-        double x2 = (-b-raizDiscriminante)/(2*a);
-        solucionesCuadratica[0] = x1;
-        solucionesCuadratica[1] = x2;
+        if(discriminante<0){
+            System.out.println("Solución no real");
+        }else{
+            double raizDiscriminante = Math.sqrt(discriminante);
+            double x1 = (-b+raizDiscriminante)/(2*a);
+            double x2 = (-b-raizDiscriminante)/(2*a);
+            solucionesCuadratica[0] = x1;
+            solucionesCuadratica[1] = x2;
+        }
         return solucionesCuadratica;
     }
 
