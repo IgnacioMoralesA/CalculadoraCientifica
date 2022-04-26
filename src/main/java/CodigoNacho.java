@@ -474,6 +474,54 @@ public class CodigoNacho {
         resultado(fact);
     }
 
+    public static void logaritmo(){
+        String[] operadores = {"el logaritmo de "};
+        double[] numeros = ingresarNumeros(operadores);
+        double a = numeros[0];
+        double log = Math.log10(a);
+        resultado(log);
+    }
+
+    public static void logaritmoNatural(){
+        String[] operadores = {"el logaritmo natural de "};
+        double[] numeros = ingresarNumeros(operadores);
+        double a = numeros[0];
+        double ln = Math.log(a);
+        resultado(ln);
+    }
+
+    public static void numeroEuler(){
+        String[] operadores = {"el exponente de euler "};
+        double[] numeros = ingresarNumeros(operadores);
+        double a = numeros[0];
+        double exp = Math.exp(a);
+        resultado(exp);
+    }
+
+    public static void coseno(){
+        String[] operadores = {"el coseno de "};
+        double[] numeros = ingresarNumeros(operadores);
+        double a = numeros[0];
+        double cos = Math.cos(a);
+        resultado(cos);
+    }
+
+    public static void seno(){
+        String[] operadores = {"el seno de "};
+        double[] numeros = ingresarNumeros(operadores);
+        double a = numeros[0];
+        double sin = Math.sin(a);
+        resultado(sin);
+    }
+
+    public static void tangente(){
+        String[] operadores = {"la tangente de "};
+        double[] numeros = ingresarNumeros(operadores);
+        double a = numeros[0];
+        double tan = Math.tan(a);
+        resultado(tan);
+    }
+
     public static void resultado(double resultado){
         System.out.println("El resultado es = "+resultado);
     }
